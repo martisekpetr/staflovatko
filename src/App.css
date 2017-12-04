@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+}
+
+.react-grid-layout {
+  background: #eee;
+}
+
+.react-grid-item {
+  box-sizing: border-box;
+  position: relative;
+  padding-right: 5px;
+  padding-top: 15px;
+  cursor: pointer;
+}
+
+.react-grid-item button.close {
+  padding: 3px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #880000;
+  font-size: xx-small;
+}
+
+.react-grid-item button.lock {
+  padding: 3px;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: xx-small;
+}
+
+.react-grid-item button.color-picker {
+  padding: 3px;
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: xx-small;
+}
+
+.react-grid-item button.close:hover {
+  color: #cc0000
+}
+
+
+.react-grid-item.static {
+  opacity: 0.75;
+  /*padding-top: 0;*/
+  /*padding-right: 0;*/
+  cursor: auto;
+}
+
+.react-grid-item.static button.close{
+  display: none;
+}

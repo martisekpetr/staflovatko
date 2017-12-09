@@ -1,0 +1,1 @@
+export const LOAD_EVENTS_FORM = 'loadEventsForm';

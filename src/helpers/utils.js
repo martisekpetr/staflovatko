@@ -1,10 +1,10 @@
 /**
  * Created by Petr on 03.12.2017.
  */
+import _ from 'lodash';
+import { CONFIG } from '../config';
 
-import { CONFIG } from './config';
-
-const getX = (hour) => {
+export const getX = (hour) => {
   if (CONFIG.IS_NIGHT_COMPACT) {
     return hour < CONFIG.NIGHT_DURATION
       ? CONFIG.DAY_LABEL_WIDTH + hour * CONFIG.HOUR_WIDTH / 2
@@ -17,6 +17,8 @@ const getX = (hour) => {
   }
 };
 
+export const keyByI = (arr) =>_.keyBy(arr, 'i');
+
 export const generateTimeLabels = (hours=24) => {
   const getWidth = (hour) => {
     if (CONFIG.IS_NIGHT_COMPACT) {
@@ -27,19 +29,19 @@ export const generateTimeLabels = (hours=24) => {
     }
   };
   
-  return [...(new Array(hours)).keys()].map(hour => ({
+  return keyByI([...(new Array(hours)).keys()].map(hour => ({
     name: `${hour}:00`,
-    i: hour.toString(),
+    i: `${hour.toString()}hr`,
     x: getX(hour),
     y: 0,
     h: CONFIG.ROWS_PER_DAY,
     w: getWidth(hour),
     static: true,
-  }));
+  })));
 };
 
 export const generateDayLabels = () => {
-  return CONFIG.DAYS.map((day, index) => ({
+  return keyByI(CONFIG.DAYS.map((day, index) => ({
     name: day,
     i: 'day' + index,
     x: 0,
@@ -47,12 +49,12 @@ export const generateDayLabels = () => {
     h: CONFIG.ROWS_PER_DAY,
     w: CONFIG.DAY_LABEL_WIDTH,
     static: true,
-  }));
+  })));
 };
 
 export const generateReccurringEvent = (name, hour, duration, color) => {
   
-  return CONFIG.DAYS.map((day, index) => ({
+  return keyByI(CONFIG.DAYS.map((day, index) => ({
     name,
     i: name + index,
     x: getX(hour),
@@ -61,5 +63,5 @@ export const generateReccurringEvent = (name, hour, duration, color) => {
     w: duration * CONFIG.HOUR_WIDTH,
     color: color,
     isUnlockable: true
-  }));
+  })));
 };

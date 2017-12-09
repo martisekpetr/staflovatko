@@ -8,6 +8,7 @@
 
 .react-grid-item {
   box-sizing: border-box;
+  border: 1px solid darkgray;
   position: relative;
   padding-right: 5px;
   padding-top: 15px;

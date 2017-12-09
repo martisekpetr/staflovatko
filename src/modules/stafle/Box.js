@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {Card, CardText} from 'material-ui/Card';
 import * as ColorPickers from 'react-color';
 
 import onClickOutside from "react-onclickoutside";
@@ -25,14 +24,14 @@ class CardSMF extends React.Component {
     const {
       item,
       onColorChanged,
-      onRemoveCard,
-      onLockCard,
+      onRemoveBox,
+      onLockBox,
       onNameChanged,
       onDoubleClick,
       style
     } = this.props;
     return (
-      <Card
+      <div
         {...this.props}
         style={{
           ...style,
@@ -43,13 +42,13 @@ class CardSMF extends React.Component {
           //ev.preventDefault();
         }}
         onDoubleClick={(ev) => {
-          onDoubleClick(item.i);
+          onDoubleClick(item);
           ev.stopPropagation();
           
         }}
       >
         {this.props.children}
-        <CardText style={{
+        <div style={{
           padding: 5,
           overflow: 'hidden',
           whiteSpace: 'nowrap',
@@ -103,16 +102,24 @@ class CardSMF extends React.Component {
           
           <button
             className="close"
-            onClick={(ev) => onRemoveCard(ev, item.i)}
+            onClick={(ev) => {
+              ev.stopPropagation();
+              ev.preventDefault();
+              onRemoveBox(item)
+            }}
           >
             &#128299;
           </button>
           { item.isUnlockable &&
           <button
             className="lock"
-            onClick={(ev) => onLockCard(ev, item.i)}
+            onClick={(ev) => {
+              ev.stopPropagation();
+              ev.preventDefault();
+              onLockBox(item)
+            }}
           >
-            { item.static ? <span>&#128275;</span> : <span>&#128274;</span> }
+            { item.static ? <span>&#128274;</span> : <span>&#128275;</span> }
           </button>
           }
           {this.state.isEditing ?
@@ -132,8 +139,8 @@ class CardSMF extends React.Component {
               <button type="submit" style={{ display: 'none' }}/>
             </form>
             : item.name }
-        </CardText>
-      </Card>
+        </div>
+      </div>
     );
   }
 }

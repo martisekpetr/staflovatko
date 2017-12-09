@@ -23,4 +23,13 @@ export const CONFIG = {
   HOUR_WIDTH: 4,
   IS_NIGHT_COMPACT: true,
   NIGHT_DURATION: 6,
+
+  // Client ID and API key from the Developer Console
+  CLIENT_ID: '776337434074-ro0mp7peltjmm145fsol3r4sj6dnje4r.apps.googleusercontent.com',
+  API_KEY: 'AIzaSyB9GT1RPPnO_puM8YN6IgHBqOanZllwp1o',
+  DISCOVERY_DOCS: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+
+  // Authorization scopes required by the API; multiple scopes can be
+  // included, separated by spaces.
+  SCOPES: "https://www.googleapis.com/auth/calendar",
 };
